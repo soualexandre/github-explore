@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@react-refresh-webpack-plugin')
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
@@ -17,7 +17,6 @@ module.exports = {
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-        hot: true,
     },
     plugins: [
         isDevelopment && new ReactRefreshWebpackPlugin(),
@@ -30,14 +29,7 @@ module.exports = {
             {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
-                use: {
-                    loader:'babel-loader',
-                    options:{
-                        plugins: [
-                            isDevelopment && require.resolve('react-refresh/babel')
-                        ].filter(Boolean)
-                    }
-                },
+                use: 'babel-loader'
             },
             {
                 test: /\.scss$/,

@@ -23,7 +23,7 @@ module.exports = {
         isDevelopment && new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public', 'index.html')
-        }).filter(Boolean),
+        }).filter(Boolean)
     ],
     module: {
         rules: [
@@ -37,6 +37,7 @@ module.exports = {
                             isDevelopment && require.resolve('react-refresh/babel')
                         ].filter(Boolean)
                     }
+                    
                 },
             },
             {
